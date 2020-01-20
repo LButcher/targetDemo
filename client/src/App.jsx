@@ -17,17 +17,37 @@ import ReactRouterPropTypes from 'react-router-prop-types';
 
 class App extends Component {
   // Initialize state
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+componentDidMount() {
+  this.getUser();
+}
+
+ getUser(){
+fetch('/api/user')
+  .then(res => res.json())
+  .then(userId => {
+      this.setState({ userId: userId })
+})
+  .catch(e => console.log(e));
+}
   
   render() {
-
+    const userId = this.state.userId;
+    console.log(userId);
+    console.log("refeshsfd");
     return (
-      <div className="App">
-        <NavBar>
-        </NavBar>
+      <div className="App"> 
+        
         <BrowserRouter>
+        <NavBar userId={userId}>
+        </NavBar>
           <Switch>
             <Route exact path="/home" component={Home} />
-            <Route exact path="/login" component={Login} />
+            <Route exact path="/login" render={(props)=> <Login userId={userId} {...props}/>} />
           </Switch>
         </BrowserRouter>
       </div>

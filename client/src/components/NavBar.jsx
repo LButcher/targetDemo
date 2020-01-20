@@ -6,42 +6,29 @@ import {
     Button,
 }
     from '@material-ui/core';
+    
 import MenuIcon from '@material-ui/icons/Menu';
+import {
+    Link
+  } from 'react-router-dom';
 import React, { Component } from 'react';
 
 class NavBar extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {user: ""};
-      }
-
-  componentDidMount() {
-    this.getUser();
-  }
-
-  getUser = () => {
-    fetch('/api/getUser')
-      .then(res => {
-        res.json();
-        console.log(res);
-      })
-      .then(user => this.setState({ user }))
-      .catch(e => console.log(e));
-  }
-
-
     render() {
-        const user = this.state.user;
-        console.log(user);
+        console.log(this.props);
         return (
             <div className="nav-container">
                 <AppBar position="relative">
                     <Toolbar>
-                        <Typography variant="h6" className="nav-title">
-                            Canada Bank
+                        <Typography variant="h6" className="nav-title-container">
+                        <Link to={'/home'}>Canada Bank</Link>
                         </Typography>
-                        <Button variant="outlined" href="/login" color="inherit" className="login">Login</Button>
+                        <Link to={'/login'} className="login-container">
+                        <Button variant="outlined" color="inherit">
+                        {this.props.userId ? this.props.userId : 'Login'}
+                            </Button>
+                            </Link>
                     </Toolbar>
                 </AppBar>
             </div>
