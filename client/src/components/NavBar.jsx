@@ -11,16 +11,23 @@ import React, { Component } from 'react';
 
 class NavBar extends Component {
 
-    state = { user:"" }
+    constructor(props) {
+        super(props);
+        this.state = {user: ""};
+      }
 
   componentDidMount() {
-    this.getValues();
+    this.getUser();
   }
 
-  getValues = () => {
+  getUser = () => {
     fetch('/api/getUser')
-      .then(res => res.json())
-      .then(user => this.setState({ user }));
+      .then(res => {
+        res.json();
+        console.log(res);
+      })
+      .then(user => this.setState({ user }))
+      .catch(e => console.log(e));
   }
 
 
