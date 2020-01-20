@@ -36,3 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.login {
+  margin-left: auto !important;
+  margin-right: 20% !important;
+}
+
+.nav-title {
+  margin-left: 20% !important;
+}
+
+.nav-container {
+  display: flex;
+  width: 100%;
+  background-color: #3f51b5;
+  align-items: center;
+  justify-content: center;
+}
