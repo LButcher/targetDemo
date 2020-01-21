@@ -2,6 +2,12 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
+var users = [
+  {userId: 1, name: "Bob Smith"},
+  {userId: 2, name: "John Doe"},
+  {userId: 3, name: "Jane Doe"}
+]
+
 var currUser;
 
 // Serve static files from the React app
@@ -15,7 +21,8 @@ app.get('/api/user', (req, res) => {
 });
 
 app.post('/api/user',(req,res)=>{
-  currUser = req.body.userId;
+  currUser = users.find(user => user.userId ==req.body.userId);
+
   res.json("put: "+JSON.stringify(req.body));
 })
 

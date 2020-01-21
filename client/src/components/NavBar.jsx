@@ -26,7 +26,7 @@ class NavBar extends Component {
                         </Typography>
                         <Link to={'/login'} className="login-container">
                         <Button variant="outlined" color="inherit">
-                        {this.props.userId ? this.props.userId : 'Login'}
+                        {this.props.name ? this.props.name : 'Login'}
                             </Button>
                         </Link>
                     </Toolbar>

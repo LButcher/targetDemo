@@ -32,27 +32,27 @@ componentDidMount() {
  getUser(){
 fetch('/api/user')
   .then(res => res.json())
-  .then(userId => {
-      this.setState({ userId: userId });
+  .then(user => {
+      this.setState({ user: user });
 })
   .catch(e => console.log(e));
 }
   
   render() {
-    let userId = this.state.userId;
+    let user = this.state.user;
+    console.log("test"+window.dataLayer);
     return (
       <div className="App"> 
         
         <BrowserRouter>
-        <NavBar userId={userId}>
+        <NavBar name={user ? user.name : undefined}>
         </NavBar>
         <ProductBar></ProductBar>
           <Switch>
             <Route exact path="/" render={(props)=> <Home 
-            userId={userId} 
             banner={banner}
              {...props}/>} />
-            <Route exact path="/login" render={(props)=> <Login userId={userId} {...props}/>} />
+            <Route exact path="/login" render={(props)=> <Login user={user} {...props}/>} />
           </Switch>
         </BrowserRouter>
       </div>
