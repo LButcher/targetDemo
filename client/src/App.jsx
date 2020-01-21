@@ -37,8 +37,6 @@ fetch('/api/user')
   
   render() {
     const userId = this.state.userId;
-    console.log(userId);
-    console.log("refeshsfd");
     return (
       <div className="App"> 
         
@@ -46,7 +44,7 @@ fetch('/api/user')
         <NavBar userId={userId}>
         </NavBar>
           <Switch>
-            <Route exact path="/home" component={Home} />
+            <Route exact path="/" component={Home} />
             <Route exact path="/login" render={(props)=> <Login userId={userId} {...props}/>} />
           </Switch>
         </BrowserRouter>

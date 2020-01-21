@@ -60,3 +60,28 @@ a {
   align-items: center;
   justify-content: center;
 }
+
+.banner-container {
+  
+}
+
+.banner-container img {
+  width: 100%;
+  max-height: 50vh;
+  object-fit: cover;
+}
+
+.offers-container {
+  transform: translateY(-3vh);
+  margin-right: 10vw;
+  margin-left: 10vw;
+}
+
+.card-media {
+  height: 20vh;
+}
+
+
+@keyframes funLizard {
+  
+}

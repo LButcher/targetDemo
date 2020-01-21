@@ -22,7 +22,7 @@ class NavBar extends Component {
                 <AppBar position="relative">
                     <Toolbar>
                         <Typography variant="h6" className="nav-title-container">
-                        <Link to={'/home'}>Canada Bank</Link>
+                        <Link to={'/'}>Canada Bank</Link>
                         </Typography>
                         <Link to={'/login'} className="login-container">
                         <Button variant="outlined" color="inherit">
