@@ -28,7 +28,7 @@ class NavBar extends Component {
                         <Button variant="outlined" color="inherit">
                         {this.props.userId ? this.props.userId : 'Login'}
                             </Button>
-                            </Link>
+                        </Link>
                     </Toolbar>
                 </AppBar>
             </div>

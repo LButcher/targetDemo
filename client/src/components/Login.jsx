@@ -24,9 +24,9 @@ class Login extends Component {
       return (
         <div>
           <h1>Login</h1>
-          <Button variant="outlined" onClick={()=>this.setUser("1")} href="/home" color="inherit" className="login">1</Button>
-          <Button variant="outlined" onClick={()=>this.setUser("2")} href="/home" color="inherit" className="login">2</Button>
-          <Button variant="outlined" onClick={()=>this.setUser("3")} href="/home" color="inherit" className="login">3</Button>
+          <Button variant="outlined" onClick={()=>this.setUser("1")} href="/" color="inherit" className="login">1</Button>
+          <Button variant="outlined" onClick={()=>this.setUser("2")} href="/" color="inherit" className="login">2</Button>
+          <Button variant="outlined" onClick={()=>this.setUser("3")} href="/" color="inherit" className="login">3</Button>
         </div>
       );
     }

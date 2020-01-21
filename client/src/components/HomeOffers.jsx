@@ -7,18 +7,30 @@ import lizard3 from '../images/lizard4.jpg'
 
 
 class HomeOffers extends Component {
+
+
     render() {
         return (
             <div className="offers-container">
                 <Grid container spacing={3}>
                     <Grid item xs={4}>
-                        <OfferCard img={lizard1}></OfferCard>
+                        <OfferCard img={lizard1}
+                        offerTitle={"lizard1"}
+                        offerContent={"lizard facts"}
+                        offerButtonContent={"BUY"}
+                        ></OfferCard>
                     </Grid>
                     <Grid item xs={4}>
-                        <OfferCard img={lizard2}></OfferCard>
+                        <OfferCard img={lizard2}
+                        offerTitle={"lizard1"}
+                        offerContent={"lizard facts"}
+                        offerButtonContent={"BUY"}></OfferCard>
                     </Grid>
                     <Grid item xs={4}>
-                        <OfferCard img={lizard3}></OfferCard>
+                        <OfferCard img={lizard3}
+                        offerTitle={"lizard1"}
+                        offerContent={"lizard facts"}
+                        offerButtonContent={"BUY"}></OfferCard>
                     </Grid>
                 </Grid>
             </div>

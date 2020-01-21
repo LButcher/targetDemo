@@ -45,6 +45,12 @@ a {
 .login-container {
   margin-left: auto !important;
   margin-right: 20% !important;
+  padding-right: 8px;
+}
+.nav-option {
+  margin-left: auto !important;
+  flex:1;
+  padding-left: 5vw;
 }
 
 
@@ -60,9 +66,19 @@ a {
   align-items: center;
   justify-content: center;
 }
+.product-container{
+  max-width: 80vw;
+  min-height: 0 !important;
+  display: flex;
+  place-self: flex-end;
+  margin-right: 20%;
+  margin-left: auto !important;
+}
 
-.banner-container {
-  
+.product-bar {
+  background-color: white !important;
+  color: Black !important;
+  min-height: 0 !important;
 }
 
 .banner-container img {
@@ -73,12 +89,12 @@ a {
 
 .offers-container {
   transform: translateY(-3vh);
-  margin-right: 10vw;
-  margin-left: 10vw;
+  margin-right: 15vw;
+  margin-left: 15vw;
 }
 
 .card-media {
-  height: 20vh;
+  height: 30vh;
 }
 
 
