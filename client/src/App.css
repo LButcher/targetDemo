@@ -155,7 +155,7 @@ a {
 .banner-offer-button{
   flex: 1;
   display: flex;
-  align-self: center;
+  align-self: flex-end;
 }
 
 

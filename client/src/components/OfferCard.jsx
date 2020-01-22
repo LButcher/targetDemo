@@ -6,9 +6,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import lizard1 from '../images/lizard1.jpg'
-import lizard2 from '../images/lizard3.jpg'
-import lizard3 from '../images/lizard4.jpg'
 
 
 

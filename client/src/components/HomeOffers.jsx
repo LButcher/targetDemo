@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import OfferCard from './OfferCard';
-import lizard1 from '../images/lizard1.jpg'
-import lizard2 from '../images/lizard3.jpg'
-import lizard3 from '../images/lizard4.jpg'
+import offer1 from '../images/offer1.jpg'
+import offer2 from '../images/offer2.jpg'
+import offer3 from '../images/offer3.jpg'
 
 
 class HomeOffers extends Component {
@@ -14,23 +14,23 @@ class HomeOffers extends Component {
             <div className="offers-container">
                 <Grid container spacing={3}>
                     <Grid item xs={4}>
-                        <OfferCard img={lizard1}
-                        offerTitle={"lizard1"}
-                        offerContent={"lizard facts"}
-                        offerButtonContent={"BUY"}
+                        <OfferCard img={offer1}
+                        offerTitle={"Insurance"}
+                        offerContent={"We offer the best life, auto and home insurance."}
+                        offerButtonContent={"Learn More"}
                         ></OfferCard>
                     </Grid>
                     <Grid item xs={4}>
-                        <OfferCard img={lizard2}
-                        offerTitle={"lizard1"}
-                        offerContent={"lizard facts"}
-                        offerButtonContent={"BUY"}></OfferCard>
+                        <OfferCard img={offer2}
+                        offerTitle={"Banking"}
+                        offerContent={"Explore our fantastic chequing and savings accounts."}
+                        offerButtonContent={"Learn More"}></OfferCard>
                     </Grid>
                     <Grid item xs={4}>
-                        <OfferCard img={lizard3}
-                        offerTitle={"lizard1"}
-                        offerContent={"lizard facts"}
-                        offerButtonContent={"BUY"}></OfferCard>
+                        <OfferCard img={offer3}
+                        offerTitle={"Investing"}
+                        offerContent={"Explore the different investing options we provide."}
+                        offerButtonContent={"Learn More"}></OfferCard>
                     </Grid>
                 </Grid>
             </div>
