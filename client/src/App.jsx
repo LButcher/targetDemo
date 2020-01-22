@@ -31,7 +31,7 @@ componentDidMount() {
 
  getUser(){
 fetch('/api/user')
-  .then(res => res.json())
+  .then(res => {res.json();})
   .then(user => {
       this.setState({ user: user });
 })
