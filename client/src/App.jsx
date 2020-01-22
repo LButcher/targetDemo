@@ -40,7 +40,6 @@ fetch('/api/user')
   
   render() {
     let user = this.state.user;
-    console.log("test"+window.dataLayer);
     return (
       <div className="App"> 
         

@@ -16,7 +16,6 @@ import React, { Component } from 'react';
 class ProductBar extends Component {
 
     render() {
-        console.log(this.props);
         return (
             <div>
                 <AppBar className="product-bar" position="relative">

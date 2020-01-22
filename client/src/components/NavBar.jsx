@@ -16,7 +16,6 @@ import React, { Component } from 'react';
 class NavBar extends Component {
 
     render() {
-        console.log(this.props);
         return (
             <div className="nav-container">
                 <AppBar position="relative">
