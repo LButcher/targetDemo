@@ -7,13 +7,9 @@ import Login from './components/Login';
 import {
   Switch,
   Route,
-  Redirect,
   Link,
-  withRouter,
   BrowserRouter,
 } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import banner from './images/family.jpg'
 
 
@@ -30,12 +26,18 @@ componentDidMount() {
 }
 
  getUser(){
-fetch('/api/user')
-  .then(res => {res.json();})
+
+  //Shamelessly ripped from https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
+   var cookieVal = document.cookie.replace(/(?:(?:^|.*;\s*)userId\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+if(cookieVal){
+fetch('/api/user/'+cookieVal)
+  .then(res =>
+    res.json())
   .then(user => {
       this.setState({ user: user });
 })
   .catch(e => console.log(e));
+}
 }
   
   render() {
@@ -44,7 +46,7 @@ fetch('/api/user')
       <div className="App"> 
         
         <BrowserRouter>
-        <NavBar name={user ? user.name : undefined}>
+        <NavBar name={(user && Object.keys(user).length>0) ? user.name : undefined}>
         </NavBar>
         <ProductBar></ProductBar>
           <Switch>

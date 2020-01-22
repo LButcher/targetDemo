@@ -6,12 +6,12 @@ import {
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 
 class Login extends Component {
 
 
   setUser = (userId) => {
+/*
     if (userId !== this.props.userId) {
       fetch('/api/user', {
         method: 'POST',
@@ -22,7 +22,8 @@ class Login extends Component {
           res.json();
         })
         .catch(e => console.log(e));
-    }
+    }*/
+    document.cookie = "userId="+userId;
   };
 
 

@@ -14,8 +14,9 @@ var currUser = {};
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(require("body-parser").json());
 
-app.get('/api/user', (req, res) => {
-
+app.get('/api/user/:userId', (req, res) => {
+  
+  currUser = users.find(user => user.userId ==req.params.userId);
   res.json(currUser);
 
 });
