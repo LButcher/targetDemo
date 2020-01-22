@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HomeOffers from './HomeOffers';
+import BannerOffer from './BannerOffer';
 
 
 class Home extends Component {
@@ -8,6 +9,7 @@ class Home extends Component {
     return (
       <div className="home-container">
         <div className="banner-container">
+        <BannerOffer></BannerOffer>
           <img src={this.props.banner}></img>
         </div>
         <HomeOffers></HomeOffers>

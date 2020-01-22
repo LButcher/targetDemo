@@ -34,7 +34,7 @@ class OfferCard extends Component {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="small" color="primary" style={{marginLeft: "auto"}}>
+                    <Button variant="contained" color="primary" style={{marginLeft: "auto"}}>
                         {this.props.offerButtonContent}
         </Button>
                 </CardActions>

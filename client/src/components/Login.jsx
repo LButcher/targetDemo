@@ -37,7 +37,7 @@ class Login extends Component {
               <Grid item>
                 <Avatar style={{backgroundColor:'rgb(76,175,80)'}}>BS</Avatar>
               </Grid>
-              <Grid item xs={8}>
+              <Grid item xs={8} style={{fontWeight: 'bold'}}>
                 Bob Smith
               </Grid>
               <Grid item >
@@ -50,7 +50,7 @@ class Login extends Component {
               <Grid item>
                 <Avatar style={{backgroundColor:'rgb(255,87,34)'}}>JD</Avatar>
               </Grid>
-              <Grid item xs={8}>
+              <Grid item xs={8} style={{fontWeight: 'bold'}}>
                 John Doe
               </Grid>
               <Grid item>
@@ -63,7 +63,7 @@ class Login extends Component {
               <Grid item>
                 <Avatar style={{backgroundColor:'rgb(233,30,99)'}}>JD</Avatar>
               </Grid>
-              <Grid item xs={8}>
+              <Grid item xs={8} style={{fontWeight: 'bold'}}>
                 Jane Doe
               </Grid>
               <Grid item>
