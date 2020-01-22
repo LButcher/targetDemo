@@ -8,7 +8,7 @@ var users = [
   {userId: 3, name: "Jane Doe"}
 ]
 
-var currUser;
+var currUser = {};
 
 // Serve static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
