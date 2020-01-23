@@ -6,25 +6,15 @@ import {
 import Grid from '@material-ui/core/Grid';
 import Avatar from '@material-ui/core/Avatar';
 import Paper from '@material-ui/core/Paper';
+import Tooltip from '@material-ui/core/Tooltip';
+import UserTile from './UserTile';
+
 
 class Login extends Component {
 
-
-  setUser = (userId) => {
-/*
-    if (userId !== this.props.userId) {
-      fetch('/api/user', {
-        method: 'POST',
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: userId })
-      })
-        .then(res => {
-          res.json();
-        })
-        .catch(e => console.log(e));
-    }*/
-    document.cookie = "userId="+userId;
-  };
+  constructor(props) {
+    super(props);
+  }
 
 
   render() {
@@ -33,49 +23,10 @@ class Login extends Component {
       <div>
         <h1>Login</h1>
         <div className="accounts-container">
-          <Paper className="login-option">
-            <Grid container wrap="nowrap" spacing={4}>
-              <Grid item>
-                <Avatar style={{backgroundColor:'rgb(76,175,80)'}}>BS</Avatar>
-              </Grid>
-              <Grid item xs={8} style={{fontWeight: 'bold'}}>
-                Bob Smith
-              </Grid>
-              <Grid item >
-              <Button variant="outlined" onClick={() => this.setUser(1)} href="/" color="inherit" className="login">Login</Button>
-              </Grid>
-            </Grid>
-          </Paper>
-          <Paper className="login-option">
-            <Grid container wrap="nowrap" spacing={4}>
-              <Grid item>
-                <Avatar style={{backgroundColor:'rgb(255,87,34)'}}>JD</Avatar>
-              </Grid>
-              <Grid item xs={8} style={{fontWeight: 'bold'}}>
-                John Doe
-              </Grid>
-              <Grid item>
-              <Button variant="outlined" onClick={() => this.setUser(2)} href="/" color="inherit" className="login">Login</Button>
-              </Grid>
-            </Grid>
-          </Paper>
-          <Paper className="login-option">
-            <Grid container wrap="nowrap" spacing={4}>
-              <Grid item>
-                <Avatar style={{backgroundColor:'rgb(233,30,99)'}}>JD</Avatar>
-              </Grid>
-              <Grid item xs={8} style={{fontWeight: 'bold'}}>
-                Jane Doe
-              </Grid>
-              <Grid item>
-              <Button variant="outlined" onClick={() => this.setUser(3)} href="/" color="inherit" className="login">Login</Button>
-              </Grid>
-            </Grid>
-          </Paper>
+          <UserTile color="rgb(76,175,80)" init="BS" userName="Bob Smith" userId="1"></UserTile>
+          <UserTile color="rgb(255,87,34)" init="JS" userName="John Smith" userId="2"></UserTile>
+          <UserTile color="rgb(233,30,99)" init="JS" userName="Jane Smith" userId="3"></UserTile>
         </div>
-        {this.props.user ? <Button variant="filled" onClick={() => this.setUser("")} href="/" color="inherit" className="login">Sign Out</Button> : <div></div>}
-        
-
       </div>
     );
   }

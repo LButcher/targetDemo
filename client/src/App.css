@@ -47,6 +47,28 @@ a {
   margin-right: 20% !important;
   padding-right: 8px;
 }
+
+.login-details-container {
+  display: flex;
+  font-weight: bold;
+}
+.login-name {
+  flex:1;
+  align-self: center;
+}
+
+.login-inputs {
+  flex:1;
+  align-self:center;
+}
+.login-inputs input {
+  font-family: inherit;
+  font-weight: inherit;
+}
+.login {
+  flex: 1;
+  align-self: center;
+}
 .nav-option {
   margin-left: auto !important;
   flex:1;
@@ -126,6 +148,11 @@ a {
   top: 35vh;
 }
 
+@media only screen and (max-height: 700px) {
+  .banner-offer-container {
+    top: 25vh;
+  }
+}
 
 .banner-offer-content {
   flex: 1;
