@@ -14,6 +14,12 @@ class UserTile extends Component {
 
     constructor(props) {
         super(props);
+        this.state = {};
+      }
+
+
+      componentDidMount(){
+        this.getUserById(this.props.userId);
       }
 
   setUser = (userId) => {
@@ -29,29 +35,37 @@ class UserTile extends Component {
     return document.cookie.replace(/(?:(?:^|.*;\s*)userId\s*\=\s*([^;]*).*$)|^.*$/, "$1");
   }
 
-  tooltipContent(userId) {
-    if(userId==1){
-        return "one";
-    }
-    else if(userId==2){
-        return "two";
-    }
-    else if(userId==3){
-        return "three";
-    }
-    else {
-        return "no data";
-    }
+getUserById(userId) {
+    fetch('/api/user/' + userId)
+        .then(res =>
+          res.json())
+        .then(user => {
+          this.setState({user: user})
+        })
+        .catch(e => console.log(e));
+  }
+
+  makeTooltip(){
+    let userInterests;
+    if(this.state.user){
+        userInterests = this.state.user.interests;
+      }
+      return JSON.stringify(userInterests);
   }
 
   render() {
+    let userDetails = this.makeTooltip();
 
+    //Don't render the child components unless we have our user details
+    if(!this.state.user){
+        return <div />;
+    }
     return (
       <div>
         <Paper className="login-option">
             <Grid container wrap="nowrap" spacing={4}>
               <Grid item>
-                    <UserDetails init={this.props.init} color={this.props.color} tooltip={this.tooltipContent(this.props.userId)}></UserDetails>
+                    <UserDetails init={this.props.init} color={this.props.color} tooltip={userDetails}></UserDetails>
               </Grid>
               <Grid item xs={8} className="login-details-container">
                 <span className="login-name">{this.props.userName}</span>

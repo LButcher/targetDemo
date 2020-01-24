@@ -185,5 +185,10 @@ a {
   align-self: flex-end;
 }
 
+.user-details-tip th {
+  color: white !important;
+}
 
-
+.user-details-tip td {
+  color: white !important;
+}

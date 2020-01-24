@@ -22,23 +22,23 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getUser();
+    this.getUserByCookie();
   }
 
-  getUser() {
-
+  getUserByCookie() {
     //Shamelessly ripped from https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
     var cookieVal = document.cookie.replace(/(?:(?:^|.*;\s*)userId\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-    if (cookieVal) {
-      fetch('/api/user/' + cookieVal)
+    if(cookieVal){
+    fetch('/api/user/' + cookieVal)
         .then(res =>
           res.json())
         .then(user => {
           this.setState({ user: user });
         })
         .catch(e => console.log(e));
-    }
+      }
   }
+
 
   render() {
     let user = this.state.user;

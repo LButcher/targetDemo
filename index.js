@@ -3,9 +3,21 @@ const path = require('path');
 const app = express();
 
 var users = [
-  {userId: 1, name: "Bob Smith", phone: "123123123", gender: "M", age: "61", interests: []},
-  {userId: 2, name: "John Smith", phone: "", gender: "M", age: "21", interests: []},
-  {userId: 3, name: "Jane Smith", phone: "", gender: "F", age: "44", interests: []}
+  {userId: 1, name: "Bob Smith", phone: "123123123", gender: "M", age: "61", interests: {
+    insurance: 1,
+    banking: 2,
+    investing: 3
+  }},
+  {userId: 2, name: "John Smith", phone: "", gender: "M", age: "21", interests: {
+    insurance: 4,
+    banking: 4,
+    investing: 6
+  }},
+  {userId: 3, name: "Jane Smith", phone: "", gender: "F", age: "44", interests: {
+    insurance: 7,
+    banking: 8,
+    investing: 9
+  }}
 ]
 
 var currUser = {};
@@ -15,6 +27,12 @@ var currUser = {};
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(require("body-parser").json());
 
+
+app.get('/api/allUsers', (req, res) => {
+  
+  res.json(users);
+
+});
 app.get('/api/user/:userId', (req, res) => {
   
   currUser = users.find(user => user.userId ==req.params.userId);
