@@ -42,6 +42,8 @@ class App extends Component {
 
   render() {
     let user = this.state.user;
+    window.user = user;
+
     return (
       <div className="App">
 

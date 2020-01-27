@@ -1,12 +1,4 @@
 import React, { Component } from 'react';
-import {
-  Button,
-}
-  from '@material-ui/core';
-import Grid from '@material-ui/core/Grid';
-import Avatar from '@material-ui/core/Avatar';
-import Paper from '@material-ui/core/Paper';
-import Tooltip from '@material-ui/core/Tooltip';
 import UserTile from './UserTile';
 
 
