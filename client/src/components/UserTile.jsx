@@ -23,6 +23,7 @@ class UserTile extends Component {
   setUser = (userId) => {
 
     document.cookie = "userId=" + userId;
+    window.user = userId;
   };
 
 
