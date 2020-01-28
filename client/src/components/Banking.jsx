@@ -14,7 +14,7 @@ import {
   } from 'react-router-dom';
 
 
-class Insurance extends Component {
+class Banking extends Component {
 
     constructor(props) {
         super(props);
@@ -23,8 +23,9 @@ class Insurance extends Component {
 
 
     render() {
-        window.dataLayer.product = "insurance";
-        window._satellite.track('viewedProduct',{product: 'insurance'})
+        window.dataLayer.product = "banking";
+       window._satellite.track('viewedProduct',{product: 'banking'})
+
 
         return (
             <div>
@@ -64,6 +65,6 @@ class Insurance extends Component {
     }
 }
 
-export default Insurance;
+export default Banking;
 
 

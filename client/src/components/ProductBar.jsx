@@ -18,17 +18,17 @@ class ProductBar extends Component {
                 <AppBar className="product-bar" position="relative">
                     <Toolbar style={{minHeight: 0}}>
                         <div className="product-container">
-                        <Link to={'/login'} className="nav-option">
+                        <Link to={'/insurance'} className="nav-option">
                         <Button color="inherit">
                                 Insurance
                             </Button>
                         </Link>
-                        <Link to={'/login'} className="nav-option">
+                        <Link to={'/banking'} className="nav-option">
                         <Button color="inherit">
                                 Banking
                             </Button>
                         </Link>
-                        <Link to={'/login'} className="nav-option">
+                        <Link to={'/investing'} className="nav-option">
                         <Button color="inherit">
                                 Investing
                             </Button>
