@@ -6,6 +6,9 @@ import {
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import UserDetails from './UserDetails';
+import {
+  Link
+} from 'react-router-dom';
 
 
 class UserTile extends Component {
@@ -71,9 +74,14 @@ getUserById(userId) {
               </Grid>
               <Grid item className="login">
                 {(this.props.userId == this.getCurrentUser()) ? 
-                                (<Button variant="outlined" onClick={() => this.setUser("")} href="/" color="inherit" className="login">Logout</Button>)
+                
+                                (
+                                  <Link to={'/'}><Button variant="outlined" onClick={() => this.setUser("")} color="inherit" className="login">Logout</Button>
+                                  </Link>)
                 :
-                (                <Button variant="outlined" onClick={() => this.setUser(this.props.userId)} href="/" color="inherit">Login</Button>
+                (                
+                  <Link to={'/'}>                <Button variant="outlined" onClick={() => this.setUser(this.props.userId)} color="inherit">Login</Button>
+                  </Link>
                 ) 
               }
               </Grid>

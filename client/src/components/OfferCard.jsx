@@ -6,6 +6,9 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import {
+    Link
+  } from 'react-router-dom';
 
 
 
@@ -17,9 +20,9 @@ class OfferCard extends Component {
             <Card>
                 <CardActionArea>
                     <CardMedia
-                        className="card-media crazy-img"
+                        className="card-media"
                         image={this.props.img}
-                        title="Contemplative Reptile"
+                        title={this.props.offerTitle}
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
@@ -31,9 +34,11 @@ class OfferCard extends Component {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
+                <Link to={this.props.link} style={{marginLeft:'auto'}}>
                     <Button variant="contained" color="primary" style={{marginLeft: "auto"}}>
                         {this.props.offerButtonContent}
         </Button>
+        </Link>
                 </CardActions>
             </Card>
         );

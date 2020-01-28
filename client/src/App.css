@@ -192,3 +192,8 @@ a {
 .user-details-tip td {
   color: white !important;
 }
+
+.product-offer-container {
+  margin-right: 15vw;
+  margin-left: 15vw;
+}
