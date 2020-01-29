@@ -5,18 +5,11 @@ import OfferCard from './OfferCard';
 import offer1 from '../images/offer1.jpg'
 import offer2 from '../images/offer2.jpg'
 import offer3 from '../images/offer3.jpg'
-import credit from '../images/credit.jpg'
-import banking from '../images/banking.jpg'
+import investing from '../images/investing.jpg'
 import BannerOffer from './BannerOffer';
-import {
-    Switch,
-    Route,
-    Link,
-    BrowserRouter,
-  } from 'react-router-dom';
 
 
-class Banking extends Component {
+class Investing extends Component {
 
     constructor(props) {
         super(props);
@@ -25,40 +18,40 @@ class Banking extends Component {
 
 
     render() {
-        window.dataLayer.product = "banking";
-       window._satellite.track('viewedProduct',{product: 'banking'})
+        window.dataLayer.product = "investing";
+       window._satellite.track('viewedProduct',{product: 'investing'})
 
 
         return (
             <div>
-                <h1 className="product-page-title">Banking</h1>
+                <h1 className="product-page-title">Investing</h1>
                 <div className="banner-container">
-                    <img src={banking}></img>
+                    <img src={investing}></img>
                     <BannerOffer ></BannerOffer>
                 </div>
                 <Container>
                     <Grid container spacing={3}>
                         <Grid item xs={4}>
-                            <OfferCard img={offer2}
-                                offerTitle={"Chequing Account"}
+                            <OfferCard img={offer1}
+                                offerTitle={"TFSA"}
                                 offerContent={"Start a chequing account today and pay no fees for 6 months."}
                                 offerButtonContent={"Learn More"}
-                                link={"/banking/chequing"}
+                                link={"/investing/tfsa"}
                             ></OfferCard>
                         </Grid>
                         <Grid item xs={4}>
-                            <OfferCard img={offer3}
-                                offerTitle={"Savings Account"}
+                            <OfferCard img={offer2}
+                                offerTitle={"RRSP"}
                                 offerContent={"Open a no fee savings account today to earn daily interest."}
                                 offerButtonContent={"Learn More"}
-                                link={"/banking/savings"}></OfferCard>
+                                link={"/investing/rrsp"}></OfferCard>
                         </Grid>
                         <Grid item xs={4}>
-                            <OfferCard img={credit}
-                                offerTitle={"Credit Card"}
-                                offerContent={"Enjoy 4% cashback for 6 months with our new platinum card."}
+                            <OfferCard img={offer3}
+                                offerTitle={"Smart Investing"}
+                                offerContent={"Use our new robo-advisor Enjoy 4% cashback for 6 months with our new platinum card."}
                                 offerButtonContent={"Learn More"}
-                                link={"/banking/credit"}></OfferCard>
+                                link={"/investing/smart"}></OfferCard>
                         </Grid>
                     </Grid>
                 </Container>
@@ -67,6 +60,6 @@ class Banking extends Component {
     }
 }
 
-export default Banking;
+export default Investing;
 
 

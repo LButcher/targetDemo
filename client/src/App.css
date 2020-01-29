@@ -197,3 +197,10 @@ a {
   margin-right: 15vw;
   margin-left: 15vw;
 }
+
+.product-page-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+}

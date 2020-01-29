@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import ProductBar from './components/ProductBar';
 import Insurance from './components/Insurance';
 import Banking from './components/Banking';
+import Investing from './components/Investing';
 import Login from './components/Login';
 import {
   Switch,
@@ -28,6 +29,11 @@ class App extends Component {
 
   componentDidMount() {
     this.getUserByCookie();
+
+    fetch('https://clientspectrumamerpa.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/3?client=clientspectrumamerpa')
+    .then(res => res.json())
+    .then(res => console.log(res))
+    .catch(e=>console.log(e));
   }
 
   getUserByCookie() {
@@ -73,15 +79,24 @@ class App extends Component {
             />
             <Route exact path="/banking" render={(props) => <Banking
               user={user}
+              banner={insuranceBanner}
               {...props} />}
             />
-            <Route exact path="/investing" render={(props) => <Login
+            <Route exact path="/investing" render={(props) => <Investing
               user={user}
+              banner={insuranceBanner}
               {...props} />}
             />
-            <Route exact path="/insurance/life-insurance"><h1>Life Insurance</h1></Route>
-            <Route exact path="/insurance/auto-insurance"><h1>Auto Insurance</h1></Route>
-            <Route exact path="/insurance/home-insurance"><h1>Home Insurance</h1></Route>
+
+            <Route exact path="/insurance/life"><h1>Life Insurance</h1></Route>
+            <Route exact path="/insurance/auto"><h1>Auto Insurance</h1></Route>
+            <Route exact path="/insurance/home"><h1>Home Insurance</h1></Route>
+            
+            <Route exact path="/banking/chequing"><h1>Chequing Accounts</h1></Route>
+            <Route exact path="/banking/savings"><h1>Savings Accounts</h1></Route>
+            <Route exact path="/banking/credit"><h1>Credit Cards</h1></Route>
+
+
           </Switch>
         </BrowserRouter>
       </div>

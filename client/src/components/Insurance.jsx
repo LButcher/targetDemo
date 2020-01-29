@@ -28,7 +28,7 @@ class Insurance extends Component {
 
         return (
             <div>
-                <h1>Insurance</h1>
+                <h1 className="product-page-title">Insurance</h1>
                 <div className="banner-container">
                     <img src={this.props.banner}></img>
                     <BannerOffer ></BannerOffer>
@@ -40,7 +40,7 @@ class Insurance extends Component {
                                 offerTitle={"Life Insurance"}
                                 offerContent={"Explore our options and find the best life insurance policy for you."}
                                 offerButtonContent={"Learn More"}
-                                link={"/insurance/life-insurance"}
+                                link={"/insurance/life"}
                             ></OfferCard>
                         </Grid>
                         <Grid item xs={4}>
@@ -48,14 +48,14 @@ class Insurance extends Component {
                                 offerTitle={"Auto Insurance"}
                                 offerContent={"Providing customers with the best auto insurance with the lowest prices."}
                                 offerButtonContent={"Learn More"}
-                                link={"/insurance/auto-insurance"}></OfferCard>
+                                link={"/insurance/auto"}></OfferCard>
                         </Grid>
                         <Grid item xs={4}>
                             <OfferCard img={offer3}
                                 offerTitle={"Home Insurance"}
                                 offerContent={"Insure your home and contents with our fantastic policies."}
                                 offerButtonContent={"Learn More"}
-                                link={"/insurance/home-insurance"}></OfferCard>
+                                link={"/insurance/home"}></OfferCard>
                         </Grid>
                     </Grid>
                 </Container>
