@@ -17,6 +17,7 @@ class UserDetails extends Component {
 
 
   render() {
+      console.log(this.props);
     let tooltipInfo = JSON.parse(this.props.tooltip);
     let insurance = tooltipInfo.insurance;
     let banking = tooltipInfo.banking;

@@ -1,22 +1,23 @@
 const express = require('express');
 const path = require('path');
 const app = express();
+const request = require('request');
 
 var users = [
   {userId: 1, name: "Bob Smith", phone: "123123123", gender: "M", age: "61", interests: {
-    insurance: 1,
-    banking: 2,
-    investing: 3
+    insurance: 0,
+    banking: 0,
+    investing: 0
   }},
   {userId: 2, name: "John Smith", phone: "", gender: "M", age: "21", interests: {
-    insurance: 4,
-    banking: 4,
-    investing: 6
+    insurance: 0,
+    banking: 0,
+    investing: 0
   }},
   {userId: 3, name: "Jane Smith", phone: "", gender: "F", age: "44", interests: {
-    insurance: 7,
-    banking: 8,
-    investing: 9
+    insurance: 0,
+    banking: 0,
+    investing: 0
   }}
 ]
 
@@ -27,6 +28,21 @@ var currUser = {};
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(require("body-parser").json());
 
+function parseAffinity(body) {
+  body = JSON.parse(body);
+  let targetResponse = body.profileAttributes['user.categoryAffinity'].value;
+
+}
+
+app.get('/api/profile/:id', (req,res) =>{
+  let queryString = 'https://clientspectrumamerpa.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/3?client=clientspectrumamerpa';
+  
+  request(queryString, function(err,response,body){
+    console.log(body);
+    res.json(body);
+    //parseAffinity(body);
+  })
+});
 
 app.get('/api/allUsers', (req, res) => {
   
@@ -34,7 +50,6 @@ app.get('/api/allUsers', (req, res) => {
 
 });
 app.get('/api/user/:userId', (req, res) => {
-  
   currUser = users.find(user => user.userId ==req.params.userId);
   res.json(currUser);
 

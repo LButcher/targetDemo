@@ -23,18 +23,20 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentPage: ""
-    };
+      currentPage: "",
+    user:{}    };
+    this.setUser = this.setUser.bind(this);
   }
 
   componentDidMount() {
     this.getUserByCookie();
-
-    fetch('https://clientspectrumamerpa.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/3?client=clientspectrumamerpa')
-    .then(res => res.json())
-    .then(res => console.log(res))
-    .catch(e=>console.log(e));
   }
+
+  /*componentDidUpdate(){
+    this.getUserByCookie();
+  }*/
+
+
 
   getUserByCookie() {
     //Shamelessly ripped from https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
@@ -48,8 +50,16 @@ class App extends Component {
         })
         .catch(e => console.log(e));
       }
+      else{
+        this.setState({user: {}})
+      }
   }
 
+  setUser = (userId) => {
+    console.log("setting");
+    document.cookie = "userId=" + userId;
+    this.getUserByCookie();
+};
 
   render() {
     let user = this.state.user;
@@ -70,20 +80,18 @@ class App extends Component {
               {...props} />} />
             <Route exact path="/login" render={(props) => <Login
               user={user}
+              setUser={this.setUser}
               {...props} />}
             />
             <Route exact path="/insurance" render={(props) => <Insurance
-              user={user}
               banner={insuranceBanner}
               {...props} />}
             />
             <Route exact path="/banking" render={(props) => <Banking
-              user={user}
               banner={insuranceBanner}
               {...props} />}
             />
             <Route exact path="/investing" render={(props) => <Investing
-              user={user}
               banner={insuranceBanner}
               {...props} />}
             />

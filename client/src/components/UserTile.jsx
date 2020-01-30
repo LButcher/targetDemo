@@ -19,38 +19,16 @@ class UserTile extends Component {
       }
 
 
-      componentDidMount(){
-        this.getUserById(this.props.userId);
-      }
-
-  setUser = (userId) => {
-
-    document.cookie = "userId=" + userId;
-    window.user = userId;
-  };
-
-
-
   getCurrentUser() {
 
     //Shamelessly ripped from https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
     return document.cookie.replace(/(?:(?:^|.*;\s*)userId\s*\=\s*([^;]*).*$)|^.*$/, "$1");
   }
 
-getUserById(userId) {
-    fetch('/api/user/' + userId)
-        .then(res =>
-          res.json())
-        .then(user => {
-          this.setState({user: user})
-        })
-        .catch(e => console.log(e));
-  }
-
   makeTooltip(){
-    let userInterests;
-    if(this.state.user){
-        userInterests = this.state.user.interests;
+    let userInterests = {};
+    if(this.props.user && Object.keys(this.props.user).length > 0){
+        userInterests = this.props.user.interests;
       }
       return JSON.stringify(userInterests);
   }
@@ -59,9 +37,12 @@ getUserById(userId) {
     let userDetails = this.makeTooltip();
 
     //Don't render the child components unless we have our user details
-    if(!this.state.user){
+    if(!this.props.user){
         return <div />;
     }
+    console.log("***");
+    console.log(this.props);
+    console.log("***");
     return (
       <div>
         <Paper className="login-option">
@@ -73,14 +54,14 @@ getUserById(userId) {
                 <span className="login-name">{this.props.userName}</span>
               </Grid>
               <Grid item className="login">
-                {(this.props.userId == this.getCurrentUser()) ? 
+                {(this.props.userId == this.props.user.userId) ? 
                 
                                 (
-                                  <Link to={'/'}><Button variant="outlined" onClick={() => this.setUser("")} color="inherit" className="login">Logout</Button>
+                                  <Link to={'/'}><Button variant="outlined" onClick={()=>this.props.setUser("")} color="inherit" className="login">Logout</Button>
                                   </Link>)
                 :
                 (                
-                  <Link to={'/'}>                <Button variant="outlined" onClick={() => this.setUser(this.props.userId)} color="inherit">Login</Button>
+                  <Link to={'/'}>                <Button variant="outlined" onClick={()=>this.props.setUser(this.props.userId)} color="inherit">Login</Button>
                   </Link>
                 ) 
               }
