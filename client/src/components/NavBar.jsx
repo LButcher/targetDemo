@@ -19,9 +19,9 @@ class NavBar extends Component {
                 <AppBar position="relative">
                     <Toolbar>
                         <Typography variant="h6" className="nav-title-container">
-                        <Link to={'/'}>Canada Bank</Link>
+                        <Link to={'/'} onClick={()=>this.props.targetView("Home")}>Canada Bank</Link>
                         </Typography>
-                        <Link to={'/login'} className="login-container">
+                        <Link to={'/login'} className="login-container" onClick={()=>this.props.targetView("Login")}>
                         <Button variant="outlined" color="inherit">
                         {this.props.name ? this.props.name : 'Login'}
                             </Button>

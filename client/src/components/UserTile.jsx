@@ -26,9 +26,10 @@ class UserTile extends Component {
   }
 
   makeTooltip(){
+    
     let userInterests = {};
-    if(this.props.user && Object.keys(this.props.user).length > 0){
-        userInterests = this.props.user.interests;
+    if(this.props.details && Object.keys(this.props.details).length > 0){
+        userInterests = this.props.details.interests;
       }
       return JSON.stringify(userInterests);
   }
@@ -40,9 +41,6 @@ class UserTile extends Component {
     if(!this.props.user){
         return <div />;
     }
-    console.log("***");
-    console.log(this.props);
-    console.log("***");
     return (
       <div>
         <Paper className="login-option">
@@ -55,13 +53,12 @@ class UserTile extends Component {
               </Grid>
               <Grid item className="login">
                 {(this.props.userId == this.props.user.userId) ? 
-                
                                 (
-                                  <Link to={'/'}><Button variant="outlined" onClick={()=>this.props.setUser("")} color="inherit" className="login">Logout</Button>
+                                  <Link to={'/'}><Button variant="outlined" onClick={()=>{this.props.setUser(0);this.props.targetView("Home")}} color="inherit" className="login">Logout</Button>
                                   </Link>)
                 :
                 (                
-                  <Link to={'/'}>                <Button variant="outlined" onClick={()=>this.props.setUser(this.props.userId)} color="inherit">Login</Button>
+                  <Link to={'/'}>                <Button variant="outlined" onClick={()=>{this.props.setUser(this.props.userId);this.props.targetView("Home")}} color="inherit">Login</Button>
                   </Link>
                 ) 
               }

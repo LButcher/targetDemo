@@ -10,7 +10,6 @@ import Login from './components/Login';
 import {
   Switch,
   Route,
-  Link,
   BrowserRouter,
 } from 'react-router-dom';
 import banner from './images/family.jpg'
@@ -26,22 +25,36 @@ class App extends Component {
       currentPage: "",
     user:{}    };
     this.setUser = this.setUser.bind(this);
+    this.targetView = this.targetView.bind(this);
   }
 
   componentDidMount() {
+    this.loadTargetProfileInfo();
     this.getUserByCookie();
   }
 
-  /*componentDidUpdate(){
-    this.getUserByCookie();
-  }*/
-
-
+  loadTargetProfileInfo(){
+    fetch('/api/loadUsers')
+        .then(res =>
+          res.json())
+        .then(users => {
+          this.setState({users: users})
+          console.log("loaded target profile data");
+        })
+        .catch(e => console.log(e));
+  }
 
   getUserByCookie() {
     //Shamelessly ripped from https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie
     var cookieVal = document.cookie.replace(/(?:(?:^|.*;\s*)userId\s*\=\s*([^;]*).*$)|^.*$/, "$1");
     if(cookieVal){
+
+      window.targetPageParams = function(){
+          return {
+            mbox3rdPartyId: cookieVal
+          }
+      }
+
     fetch('/api/user/' + cookieVal)
         .then(res =>
           res.json())
@@ -51,27 +64,39 @@ class App extends Component {
         .catch(e => console.log(e));
       }
       else{
+        window.targetPageParams = function(){
+          return {
+            mbox3rdPartyId: 0
+          }
+      }
         this.setState({user: {}})
       }
   }
 
   setUser = (userId) => {
-    console.log("setting");
     document.cookie = "userId=" + userId;
     this.getUserByCookie();
 };
 
+targetView(pageName){
+  if(window.adobe && window.adobe.target){
+    window.adobe.target.triggerView(pageName);
+  }
+}
+
   render() {
     let user = this.state.user;
-    window.user = user;
+    let users = this.state.users;
     window.dataLayer.user = this.state.user;
-    window._satellite.track('render');
+
 
     return (
       <div className="App">
 
         <BrowserRouter>
-          <NavBar name={(user && Object.keys(user).length > 0) ? user.name : undefined}>
+          <NavBar name={(user && Object.keys(user).length > 0) ? user.name : undefined}
+          targetView={this.targetView}
+          >
           </NavBar>
           <ProductBar></ProductBar>
           <Switch>
@@ -80,19 +105,24 @@ class App extends Component {
               {...props} />} />
             <Route exact path="/login" render={(props) => <Login
               user={user}
+              users={users}
               setUser={this.setUser}
+              targetView={this.targetView}
               {...props} />}
             />
             <Route exact path="/insurance" render={(props) => <Insurance
               banner={insuranceBanner}
+              targetView={this.targetView}
               {...props} />}
             />
             <Route exact path="/banking" render={(props) => <Banking
               banner={insuranceBanner}
+              targetView={this.targetView}
               {...props} />}
             />
             <Route exact path="/investing" render={(props) => <Investing
               banner={insuranceBanner}
+              targetView={this.targetView}
               {...props} />}
             />
 

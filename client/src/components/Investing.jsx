@@ -11,22 +11,26 @@ import BannerOffer from './BannerOffer';
 
 class Investing extends Component {
 
-    constructor(props) {
-        super(props);
-    }
 
 
 
     render() {
         window.dataLayer.product = "investing";
-       window._satellite.track('viewedProduct',{product: 'investing'})
-
+       //window._satellite.track('viewedProduct',{product: 'investing'})
+       if(window.adobe && window.adobe.target){
+        window.adobe.target.trackEvent({
+            "mbox": "target-global-mbox",
+            "params": {
+                "user.categoryId": "investing"
+            }
+        })
+    };
 
         return (
             <div>
                 <h1 className="product-page-title">Investing</h1>
                 <div className="banner-container">
-                    <img src={investing}></img>
+                    <img alt="investing banner" src={investing}></img>
                     <BannerOffer ></BannerOffer>
                 </div>
                 <Container>

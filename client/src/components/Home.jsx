@@ -10,7 +10,7 @@ class Home extends Component {
       <div className="home-container">
         <div className="banner-container">
         <BannerOffer></BannerOffer>
-          <img src={this.props.banner}></img>
+          <img alt="home banner" src={this.props.banner}></img>
         </div>
         <HomeOffers></HomeOffers>
       </div>

@@ -2,38 +2,32 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container'
 import OfferCard from './OfferCard';
-import offer1 from '../images/offer1.jpg'
 import offer2 from '../images/offer2.jpg'
 import offer3 from '../images/offer3.jpg'
 import credit from '../images/credit.jpg'
 import banking from '../images/banking.jpg'
 import BannerOffer from './BannerOffer';
-import {
-    Switch,
-    Route,
-    Link,
-    BrowserRouter,
-  } from 'react-router-dom';
 
 
 class Banking extends Component {
 
-    constructor(props) {
-        super(props);
-    }
-
-
-
     render() {
         window.dataLayer.product = "banking";
-       window._satellite.track('viewedProduct',{product: 'banking'})
+      //window._satellite.track('viewedProduct',{product: 'banking'})
 
-
+      if(window.adobe && window.adobe.target){
+        window.adobe.target.trackEvent({
+            "mbox": "target-global-mbox",
+            "params": {
+                "user.categoryId": "banking"
+            }
+        })
+    };
         return (
             <div>
                 <h1 className="product-page-title">Banking</h1>
                 <div className="banner-container">
-                    <img src={banking}></img>
+                    <img alt="banking banner" src={banking}></img>
                     <BannerOffer ></BannerOffer>
                 </div>
                 <Container>

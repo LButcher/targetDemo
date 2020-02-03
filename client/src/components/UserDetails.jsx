@@ -17,11 +17,12 @@ class UserDetails extends Component {
 
 
   render() {
-      console.log(this.props);
     let tooltipInfo = JSON.parse(this.props.tooltip);
     let insurance = tooltipInfo.insurance;
     let banking = tooltipInfo.banking;
     let investing = tooltipInfo.investing;
+
+    
     return (
       <div>
                 <Tooltip title={<React.Fragment>
@@ -30,7 +31,7 @@ class UserDetails extends Component {
                             <TableHead>
                                 <TableRow className="user-details-tip">
                                     <TableCell >Interest</TableCell>
-                                    <TableCell>Affinity</TableCell>
+                                    <TableCell>Affinity Rank</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>

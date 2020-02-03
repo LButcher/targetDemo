@@ -4,6 +4,11 @@ const app = express();
 const request = require('request');
 
 var users = [
+  {userId: 0, name: "Login", phone: "0", gender: "M", age: "0", interests: {
+    insurance: 0,
+    banking: 0,
+    investing: 0
+  }},
   {userId: 1, name: "Bob Smith", phone: "123123123", gender: "M", age: "61", interests: {
     insurance: 0,
     banking: 0,
@@ -28,9 +33,15 @@ var currUser = {};
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(require("body-parser").json());
 
-function parseAffinity(body) {
+function parseAffinities(userId,body) {
   body = JSON.parse(body);
-  let targetResponse = body.profileAttributes['user.categoryAffinity'].value;
+  let affinities = body.profileAttributes['user.cust_Affinities'].value;
+  affinities = affinities.substring(affinities.indexOf('[')+1,affinities.indexOf(']'));
+  affinities = affinities.split(",").map(item => item.trim());
+  for(let i = 0;i<affinities.length;i++){
+    let userToUpdate = users.find(user => user.userId ==userId);
+    userToUpdate.interests[affinities[i]] = i+1;
+  }
 
 }
 
@@ -38,17 +49,23 @@ app.get('/api/profile/:id', (req,res) =>{
   let queryString = 'https://clientspectrumamerpa.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/3?client=clientspectrumamerpa';
   
   request(queryString, function(err,response,body){
-    console.log(body);
     res.json(body);
-    //parseAffinity(body);
   })
 });
 
-app.get('/api/allUsers', (req, res) => {
-  
+app.get('/api/loadUsers', (req, res) => {
+  let queryStringA = 'https://clientspectrumamerpa.tt.omtrdc.net/rest/v1/profiles/thirdPartyId/';
+  let queryStringB = '?client=clientspectrumamerpa';
+  for(let i = 1;i<users.length;i++){
+    let queryString = queryStringA+i+queryStringB;
+    request(queryString, function(err,response,body){
+      //res.json(body);
+      parseAffinities(i,body);
+    })
+  }
   res.json(users);
-
 });
+
 app.get('/api/user/:userId', (req, res) => {
   currUser = users.find(user => user.userId ==req.params.userId);
   res.json(currUser);

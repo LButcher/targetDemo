@@ -6,31 +6,31 @@ import offer1 from '../images/offer1.jpg'
 import offer2 from '../images/offer2.jpg'
 import offer3 from '../images/offer3.jpg'
 import BannerOffer from './BannerOffer';
-import {
-    Switch,
-    Route,
-    Link,
-    BrowserRouter,
-  } from 'react-router-dom';
 
 
 class Insurance extends Component {
 
-    constructor(props) {
-        super(props);
-    }
 
 
 
     render() {
         window.dataLayer.product = "insurance";
-        window._satellite.track('viewedProduct',{product: 'insurance'})
+        //window._satellite.track('viewedProduct',{product: 'insurance'})
+        
+        if(window.adobe && window.adobe.target){
+            window.adobe.target.trackEvent({
+                "mbox": "target-global-mbox",
+                "params": {
+                    "user.categoryId": "insurance"
+                }
+            })
+        };
 
         return (
             <div>
                 <h1 className="product-page-title">Insurance</h1>
                 <div className="banner-container">
-                    <img src={this.props.banner}></img>
+                    <img alt="insurance banner" src={this.props.banner}></img>
                     <BannerOffer ></BannerOffer>
                 </div>
                 <Container>

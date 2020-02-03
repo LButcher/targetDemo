@@ -141,16 +141,18 @@ a {
 
 .banner-offer-container {
   position: absolute;
-  width: 500px;
+  width: 25vw;
   height: 200px;
   background-color:rgb(0,0,0,0.7);
-  left: 15vw;
-  top: 35vh;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 25vh;
 }
 
 @media only screen and (max-height: 700px) {
   .banner-offer-container {
-    top: 25vh;
+      top: 30vh;
   }
 }
 
